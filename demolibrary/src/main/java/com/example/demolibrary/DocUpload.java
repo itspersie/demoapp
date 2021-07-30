@@ -37,7 +37,8 @@ public class DocUpload extends AppCompatActivity {
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
 
         // We will be redirected to choose pdf
-        galleryIntent.setType("application/pdf");
+      galleryIntent.setType("*/*");
+        //galleryIntent.setType(appl)
         startActivityForResult(galleryIntent, 1);
     }
     ProgressDialog dialog;
@@ -81,7 +82,9 @@ public class DocUpload extends AppCompatActivity {
                         Uri uri = task.getResult();
                         String myurl;
                         myurl = uri.toString();
+
                         Toast.makeText(DocUpload.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
                     } else {
                         dialog.dismiss();
                         Toast.makeText(DocUpload.this, "UploadedFailed", Toast.LENGTH_SHORT).show();
